@@ -138,3 +138,23 @@ max_key = max(mailcount, key=mailcount.get)
 all_values = mailcount.values()
 max_value = max(all_values)
 print(max_key, max_value)
+
+# Exercise 5
+
+fname = input("Enter file name here: ")
+fhand = open(fname)
+
+domain = dict()
+
+for lines in fhand:
+    if lines.startswith('From '):
+        line = lines.split()
+        address = line[1]
+        address = address.split('@')
+        finaldomain = address[1]
+        # domain[finaldomain] = mailcount.get(finaldomain, 0) + 1
+        if finaldomain not in domain:
+            domain[finaldomain] = 1
+        else:
+            domain[finaldomain] += 1
+print(domain)
